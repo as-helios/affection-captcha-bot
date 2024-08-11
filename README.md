@@ -6,12 +6,13 @@ The number pad is randomized each time. Difficulty, attempts, and time to expira
 
 ## Getting Started
 
-### Bare Metal
-
 - Clone the repo
 - Open the `app` folder
 - Rename `sample.env` to `.env`
 - Enter your Telegram bot token from @botfather
+
+### Bare Metal
+
 - Type `pip install -r requirements.txt` to install dependencies
 - Run by typing `python main.py`
 

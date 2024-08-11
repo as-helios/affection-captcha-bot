@@ -1,6 +1,8 @@
 # affection-captcha-bot
 
-Users are auto muted by default. They can unmute themself if they successfully click the correct 4 numbers. The number pad is randomized each time. Difficulty, attempts, and time to expiration can be set in the env file.
+Users are auto muted when they join. They can unmute themself if they successfully click the correct 4 numbers.
+
+The number pad is randomized each time. Difficulty, attempts, and time to expiration can be set in the env file.
 
 ## Getting Started
 

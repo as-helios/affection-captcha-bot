@@ -1,0 +1,4 @@
+httpx
+python-telegram-bot[ext]
+python-dotenv
+multicolorcaptcha

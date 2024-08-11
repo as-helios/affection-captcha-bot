@@ -10,7 +10,16 @@ from telegram.ext import ContextTypes
 
 
 def get_name_from_user(user):
-    return "@{}".format(user.username) if hasattr(user, 'username') else "{} {}".format(user.first_name, user.last_name)
+    if hasattr(user, 'username') and user.username:
+        name = "@{}".format(user.username)
+    else:
+        name = []
+        if user.first_name:
+            name.append(user.first_name)
+        if user.last_name:
+            name.append(user.last_name)
+        name = ' '.join(name)
+    return name if name else 'ser'
 
 
 async def delete_message(context: ContextTypes.DEFAULT_TYPE) -> None:

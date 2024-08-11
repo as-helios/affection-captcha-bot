@@ -43,7 +43,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     elif update.effective_chat.type not in ('supergroup',):
         return
 
-    restricted_perms = {"can_send_messages": False}
+    restricted_perms = {"can_send_messages": False, "can_send_other_messages": False}
     # new user join the chat
     if update.message.new_chat_members:
         for user in update.message.new_chat_members:

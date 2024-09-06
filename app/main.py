@@ -73,6 +73,12 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
                 await solve_captcha(update, context, user_data)
         return
 
+    # new user leaves the chat before completing the captcha
+    elif 'left_chat_participant' in update.message.api_kwargs:
+        user_data = load_case_file(update.message.chat_id, update.message.api_kwargs['left_chat_participant']['id'])
+        if not user_data['captcha_solved']:
+            await context.bot.delete_message(chat_id=update.message.chat_id, message_id=user_data['captcha_message_id'])
+
 
 async def menu_button(update: Update, context: ContextTypes.DEFAULT_TYPE):
     query = update.callback_query

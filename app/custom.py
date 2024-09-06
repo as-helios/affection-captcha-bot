@@ -52,6 +52,8 @@ async def solve_captcha(update, context, user_data):
         msg = await update.callback_query.edit_message_text(text=text, reply_markup=reply_markup)
     else:
         msg = await update.message.reply_photo("{}/{}".format(os.getenv('DATA_FOLDER'), user_data["captcha_file"]), caption=text, reply_markup=reply_markup)
+        user_data['captcha_message_id'] = msg.message_id
+        save_case_file(update.message.chat.id, user_data)
     context.job_queue.run_once(delete_message, int(os.getenv('CAPTCHA_EXPIRES')), data={'chat_id': msg.chat_id, 'message_id': msg.message_id})
 
 

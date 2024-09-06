@@ -50,10 +50,11 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
             # skip if bot
             if user.is_bot:
                 continue
+
             # mute the user
             await context.bot.restrict_chat_member(
                 update.message.chat_id,
-                update.message.from_user.id,
+                update.message.api_kwargs['new_chat_participant']['id'],
                 restricted_perms
             )
             # checks if user is cas banned, do not unmute or give them a captcha
